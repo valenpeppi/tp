@@ -1,7 +1,9 @@
 # Documentación
-**TODO: En revisión.**
+
 
 ## Formato
+
+[README.md](https://mermaid.js.org)
 * La documentación debe estar disponible en un directorio **docs** en el primer nivel de el/los repositorios.
 * El punto de entrada de la misma será un archivo README.md en el directorio docs y deberá estar linkeada en el README.md del proyecto.
 * Los documentos de texto generados por los alumnos deben ser subidos en formato markdown.
@@ -21,3 +23,22 @@ A continuación se detalla la documentación mínima a incluir para cada entrega
 |evidencia de ejecución de test automáticos||X|
 |demo de app en video|TBD|X|
 |deploy|TBD|TBD|
+
+
+Link al [README.md](https://github.com/valenpeppi/tp/blob/main/README.md) del proyecto.
+Link al modelo entidad-relación: 
+
+Instrucciones de instalacion:
+
+  Frontend:
+    - npm install
+    - npm run dev
+
+  Backend:
+    - .env
+    - npx prisma migrate reset
+    - npm install
+    - npm run dev
+    
+
+  
