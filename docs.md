@@ -198,6 +198,46 @@ Refs: `src/payments/stripe.webhook.ts`
 
 ---
 
+## EVIDENCIA DE RESULTADOS DE TESTING
+
+### Test unitario - Backend
+
+#### Places
+<img width="1190" height="305" alt="image" src="https://github.com/user-attachments/assets/6fc30515-1189-4292-aff7-982c23152935" />
+
+
+#### Seats
+<img width="1174" height="253" alt="image" src="https://github.com/user-attachments/assets/0249d56e-ad2c-4f0d-b2b1-a7586113594b" />
+
+
+#### Sales
+<img width="1194" height="251" alt="image" src="https://github.com/user-attachments/assets/055fe55f-add5-40d7-951d-937ae116e945" />
+
+
+#### Events
+<img width="1188" height="262" alt="image" src="https://github.com/user-attachments/assets/213745d7-6cb0-4331-b404-4bedc05d6539" />
+
+---
+
+### Test de integración - Backend
+
+#### Places
+<img width="863" height="356" alt="image" src="https://github.com/user-attachments/assets/d843137a-6c0b-4921-87ef-ce4d22612a15" />
+
+
+### Test unitario - FrontEnd
+
+#### Login
+<img width="895" height="457" alt="image" src="https://github.com/user-attachments/assets/7a92b5b0-2652-437a-98c4-77105236fa7c" />
+
+
+### Test E2E - FrontEnd
+
+<img width="806" height="198" alt="image" src="https://github.com/user-attachments/assets/5a481fea-ca05-4ced-ab21-6e0134804522" />
+
+
+---
+
 ## DOCUMENTACION DE LA API
 
 ### Base URL y conceptos globales
