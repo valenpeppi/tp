@@ -38,10 +38,10 @@ Link de Draw.io: https://app.diagrams.net/#G1JQ4jZBuJwJ3PSq4Bxjy0-jp5qHoPxyZK#%7
 Regularidad:
 |Req|Detalle|
 |:-|:-|
-|CRUD simple|1. CRUD TipoEvento<br>2. CRUD Usuario <br>3. CRUD Lugar <br>4. CRUD ComisionEntrada|
-|CRUD dependiente|1. CRUD Precio {depende de} CRUD Sector y CRUD Evento<br>2. CRUD Evento {depende de} CRUD Lugar y CRUD TipoEvento|
-|Listado<br>+<br>detalle| 1. Listado de Eventos filtrado por fecha, muestra nombre de evento, descripcion, precio y fecha => detalle muestra tipo de evento y espacio libre.<br> 2. Listado de eventos filtrado por tipo del evento, muestra nombre de evento, tipo del evento, descripcion y precio => detalle muestra espacio libre y fecha.|
-|CUU/Epic|1. Comprar una entrada para un evento habilitado de un tipo de evento.<br>2. Crear un evento de un tipo y para una fecha determinada.|
+|CRUD simple|1. CRUD TipoEvento<br>2. CRUD Usuario <br>3. CRUD Lugar|
+|CRUD dependiente|1. CRUD Precio {depende de} Sector y Evento<br>2. CRUD Evento {depende de} Lugar y TipoEvento<br>3.CRUD Sector {depende de} CRUD Lugar|
+|Listado<br>+<br>detalle| 1. Listado de Eventos filtrable por nombre y tipo, mostrando nombre, descripción, precio “desde” y fecha → detalle del evento muestra con estado, tipo, lugar, sectores disponibles, y si el evento/sector es enumerado o no enumerado.<br> 2. Listado de eventos filtrado por tipo del evento, muestra nombre de evento e imagen => detalle muestra nombre, descripción, precio “desde”, fecha, estado, tipo, lugar, sectores disponibles.|
+|CUU/Epic|1. Comprar entradas para un evento publicado, contemplando flujo enumerado (selección de asientos en mapa dentro del sector) y flujo no enumerado (cantidad por sector).<br>2. Crear evento por organizador (queda pendiente), y publicar al ser aprobado por un administrador.
 
 
 Adicionales para Aprobación
