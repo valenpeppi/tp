@@ -24,21 +24,3 @@ A continuación se detalla la documentación mínima a incluir para cada entrega
 |demo de app en video|TBD|X|
 |deploy|TBD|TBD|
 
-
-Link al [README.md](https://github.com/valenpeppi/tp/blob/main/README.md) del proyecto.
-Link al modelo entidad-relación: 
-
-Instrucciones de instalacion:
-
-  Frontend:
-    - npm install
-    - npm run dev
-
-  Backend:
-    - .env
-    - npx prisma migrate reset
-    - npm install
-    - npm run dev
-    
-
-  
