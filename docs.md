@@ -12,7 +12,7 @@
 - Definición de los requerimientos tecnicos y funcionales.
 ---
 
-### mayo 2025 — Aprendizaje
+### Mayo 2025 — Aprendizaje
 
 -Primeros conocimientos de los lenguajes a utilizar en la aplicación.
 -Definición grupal de tecnologías a implementar
