@@ -40,7 +40,7 @@ Regularidad:
 |:-|:-|
 |CRUD simple|1. CRUD TipoEvento<br>2. CRUD Usuario <br>3. CRUD Lugar|
 |CRUD dependiente|1. CRUD Precio {depende de} Sector y Evento<br>2. CRUD Evento {depende de} Lugar y TipoEvento<br>3.CRUD Sector {depende de} CRUD Lugar|
-|Listado<br>+<br>detalle| 1. Listado de Eventos filtrable por nombre y tipo, mostrando nombre, descripción, precio “desde” y fecha → detalle del evento muestra con estado, tipo, lugar, sectores disponibles, y si el evento/sector es enumerado o no enumerado.<br> 2. Listado de eventos filtrado por tipo del evento, muestra nombre de evento e imagen => detalle muestra nombre, descripción, precio “desde”, fecha, estado, tipo, lugar, sectores disponibles.|
+|Listado<br>+<br>detalle| 1. Listado por nombre de evento, mostrando nombre, descripción, precio “desde” y fecha → detalle del evento muestra con estado, tipo, lugar, sectores disponibles, y si el evento/sector es enumerado o no enumerado.<br> 2. Listado por tipo de evento, muestra nombre de evento e imagen => detalle muestra nombre, descripción, precio “desde”, fecha, estado, tipo, lugar, sectores disponibles.|
 |CUU/Epic|1. Comprar entradas para un evento publicado, contemplando flujo enumerado (selección de asientos en mapa dentro del sector) y flujo no enumerado (cantidad por sector).<br>2. Crear evento por organizador (queda pendiente), y publicar al ser aprobado por un administrador.|
 
 
@@ -57,6 +57,6 @@ Adicionales para Aprobación Directa
 |Req|Detalle|
 |:-|:-|
 |Listados |1. Eventos filtrados por descripcion parcial y tipo de evento. Muestra los datos del evento.|
-|CUU/Epic|1. Destacar evento<br>2.  Ver historial de compras del usuario con tickets descargables.|
-|Otros|1. Ayuda.<br>2. Preguntas frecuentes<br>3. Sobre TicketApp.|
+|CUU/Epic|1. Asistente virtual de guiado.<br>2.  Ver historial de compras del usuario con tickets descargables.|
+|Otros|1. Ayuda.<br>2. Preguntas frecuentes.<br>3. Sobre TicketApp.|
 
