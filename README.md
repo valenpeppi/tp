@@ -1,20 +1,21 @@
 # Venta de Entradas – TP DSW 2025
 
+---
 
-## 🧩 Tecnologías Principales
+## Tecnologías Principales
 
 | Capa | Tecnología | Descripción |
 |------|-------------|--------------|
-| **Frontend** | React + TypeScript (Vite) | SPA moderna, con rutas protegidas, contextos globales y componentes dinámicos. |
+| **Frontend** | HTML + CSS + React + TypeScript (Vite) | SPA moderna, con rutas protegidas, contextos globales y componentes dinámicos. |
 | **Backend** | Node.js + Express | API REST modular, con controladores, validaciones y manejo de errores. |
 | **ORM / DB** | Prisma ORM + MySQL | Mapeo de modelos relacionales y migraciones automáticas. |
 | **Autenticación** | JWT + Bcrypt | Registro e inicio de sesión seguros. |
-| **Pagos** | Stripe + MercadoPago | Integración para pagos en línea simulados y reales. |
+| **Pagos** | Stripe / MercadoPago | Integración para pagos en línea simulados y reales. |
 | **Tests** | Vitest / Jest / Playwright | Pruebas unitarias, de integración y end-to-end. |
 
 ---
 
-## ⚙️ Instalación y Ejecución del Proyecto
+## Instalación y Ejecución del Proyecto
 
 ### Requisitos previos
 Tener instalado:
@@ -82,6 +83,8 @@ npm run dev
 
 ```
 
+---
+
 ## Credenciales de prueba
 
 | ROL | EMAIL | CONTRASEÑA |
@@ -90,6 +93,7 @@ npm run dev
 | **Administrador** | peppi@gmail.com | peppi |
 | **Organizador** | sbrolla@gmail.com | peppi |
 
+---
 
 ## Ejecucion de test
 
@@ -113,9 +117,19 @@ npx playwright test --headed
 
 ```
 
+---
+
 ## Video demostrativo
-link al video
+[Link](https://youtu.be/8xIs6wFfBYE?si=NOzRUeTZ0B0ZajA8)
+
+---
 
 ## Documentación de la API
 link al docs
+
+---
+
+## Contacto
+Email: gianzabaleta6@hotmail.com
+Teléfono: 2478509639
 
