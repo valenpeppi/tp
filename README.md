@@ -1,22 +1,5 @@
-# Venta de entradas para eventos
+# Venta de Entradas – TP DSW 2025
 
-
-## Instalación y ejecución del proyecto
-
-### Requisitos previos
-*Node js
-*mySQL
-*
-
-# 🎟️ Venta de Entradas – TP Final DSW 2025
-
-## 📘 Descripción del Proyecto
-**Venta de Entradas** es un sistema web completo que permite a los usuarios visualizar eventos, seleccionar sectores o asientos específicos, comprar entradas mediante diferentes medios de pago (Stripe y MercadoPago), y gestionar las compras realizadas.  
-Cuenta con un **frontend en React + TypeScript (Vite)** y un **backend en Node.js + Express + Prisma + MySQL**, desarrollados siguiendo las convenciones y buenas prácticas del framework.
-
-El proyecto se desarrolló como **Trabajo Práctico Final 2025** de la asignatura **Desarrollo de Software (UTN – FRRO)**.
-
----
 
 ## 🧩 Tecnologías Principales
 
@@ -33,8 +16,8 @@ El proyecto se desarrolló como **Trabajo Práctico Final 2025** de la asignatur
 
 ## ⚙️ Instalación y Ejecución del Proyecto
 
-### 🔧 1. Requisitos previos
-Asegurate de tener instalado:
+### Requisitos previos
+Tener instalado:
 - [Node.js](https://nodejs.org/) (v18 o superior)  
 - [MySQL](https://dev.mysql.com/downloads/) (v8 o superior)  
 - [Git](https://git-scm.com/)  
@@ -42,7 +25,58 @@ Asegurate de tener instalado:
 
 ---
 
-### 💾 2. Clonar los repositorios
+### Clonar los repositorios
+
+```bash
+# Clonar el frontend
+git clone https://github.com/tu-usuario/FrontEnd-Venta-de-Entradas.git
+cd FrontEnd-Venta-de-Entradas
+
+# Clonar el backend
+git clone https://github.com/tu-usuario/BackEnd-Venta-de-Entradas.git
+cd BackEnd-Venta-de-Entradas
+
+```
+
+### Configurar base de datos
+
+```bash
+# Crear el archivo .env en el backend
+OPENROUTER_API_KEY=
+
+DB_HOST=localhost
+DB_PORT=3306
+DB_USER=root
+DB_PASSWORD=password
+DB_NAME=ticketapp
+DATABASE_URL="mysql://root:password@localhost:3306/ticketapp"
+FRONTEND_URL=http://localhost:5173
+BACKEND_URL=http://localhost:3000
+
+# Clave secreta de reCAPTCHA
+RECAPTCHA_SECRET_KEY=
+#Clave MP
+MP_ACCESS_TOKEN=
+#Clave Stripe
+STRIPE_SECRET_KEY=
+STRIPE_WEBHOOK_SECRET=
+
+# Ejecutar migraciones y seeds iniciales
+npx prisma migrate reset
+
+```
+### Ejecutar el backend
+
+```bash
+# Clonar el frontend
+git clone https://github.com/tu-usuario/FrontEnd-Venta-de-Entradas.git
+cd FrontEnd-Venta-de-Entradas
+
+# Clonar el backend
+git clone https://github.com/tu-usuario/BackEnd-Venta-de-Entradas.git
+cd BackEnd-Venta-de-Entradas
+
+### Clonar los repositorios
 
 ```bash
 # Clonar el frontend
