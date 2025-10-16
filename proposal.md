@@ -60,3 +60,7 @@ Adicionales para Aprobación Directa
 |CUU/Epic|1. Asistente virtual de guiado.<br>2.  Ver historial de compras del usuario con tickets descargables.|
 |Otros|1. Ayuda.<br>2. Preguntas frecuentes.<br>3. Sobre TicketApp.|
 
+---
+
+### Link a [PR](https://github.com/valenpeppi/tp/pulls)
+
