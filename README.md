@@ -68,21 +68,16 @@ npx prisma migrate reset
 ### Ejecutar el backend
 
 ```bash
-# Clonar el frontend
-git clone https://github.com/tu-usuario/FrontEnd-Venta-de-Entradas.git
-cd FrontEnd-Venta-de-Entradas
-
-# Clonar el backend
-git clone https://github.com/tu-usuario/BackEnd-Venta-de-Entradas.git
 cd BackEnd-Venta-de-Entradas
+npm install
+npm run dev
 
-### Clonar los repositorios
+```
+### Ejecutar el frontend
 
 ```bash
-# Clonar el frontend
-git clone https://github.com/tu-usuario/FrontEnd-Venta-de-Entradas.git
 cd FrontEnd-Venta-de-Entradas
+npm install
+npm run dev
 
-# Clonar el backend
-git clone https://github.com/tu-usuario/BackEnd-Venta-de-Entradas.git
-cd BackEnd-Venta-de-Entradas
+```
