@@ -44,10 +44,10 @@ Regularidad:
 |CUU/Epic|1. Comprar entradas para un evento publicado, contemplando flujo enumerado (selección de asientos en mapa dentro del sector) y flujo no enumerado (cantidad por sector).<br>2. Crear evento por organizador (queda pendiente), y publicar al ser aprobado por un administrador.|
 
 
-Adicionales para Aprobación
+Adicionales para Aprobación Directa
 |Req|Detalle|
 |:-|:-|
-|CRUD |1. CRUD Usuario<br>2. CRUD Entrada<br>3. CRUD Evento<br>4. CRUD Sector<br>5. CRUD Venta<br>6. CRUD Precio<br>7. CRUD Lugar<br>8. CRUD ComisionEntrada<br>9. CRUD TipoEvento<br>10. CRUD Butaca<br>11. CRUD LineaVenta|
+|CRUD |1. CRUD Usuario<br>2. CRUD Entrada<br>3. CRUD Evento<br>4. CRUD Sector<br>5. CRUD Venta<br>6. CRUD Precio<br>7. CRUD Lugar<br>8. CRUD TipoEvento<br>9. CRUD Butaca<br>10. CRUD LineaVenta|
 |CUU/Epic|1. Comprar una entrada para un evento publicado<br>2. Crear un evento.<br>3. Aprobar/rechazar eventos pendientes.<br>4. Destacar eventos|
 
 
