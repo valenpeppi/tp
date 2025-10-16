@@ -25,8 +25,8 @@ En caso que un usuario se decida a realizar la compra de entradas para un determ
 Al momento de confirmar la compra, se solicitarán los datos necesarios y se procederá con el pago a través de los medios habilitados. Una vez finalizado el proceso, se mostrará al usuario un resumen detallado de su compra.
 
 ## Modelo    
-<img width="1414" height="541" alt="image" src="https://github.com/user-attachments/assets/ca593d41-f697-424b-a6ce-7c69ff25840b" />
-(https://github.com/user-attachments/assets/20c47aa5-ba49-4d5c-ad4d-e2c1836824a5)
+<img width="1414" height="541" alt="image" src="https://github.com/user-attachments/assets/ca593d41-f697-424b-a6ce-7c69ff25840b" /><br>
+(https://github.com/user-attachments/assets/20c47aa5-ba49-4d5c-ad4d-e2c1836824a5)<br>
 Link de Draw.io: https://app.diagrams.net/#G1JQ4jZBuJwJ3PSq4Bxjy0-jp5qHoPxyZK#%7B%22pageId%22%3A%22C5RBs43oDa-KdzZeNtuy%22%7D
 
 
@@ -41,14 +41,14 @@ Regularidad:
 |CRUD simple|1. CRUD TipoEvento<br>2. CRUD Usuario <br>3. CRUD Lugar|
 |CRUD dependiente|1. CRUD Precio {depende de} Sector y Evento<br>2. CRUD Evento {depende de} Lugar y TipoEvento<br>3.CRUD Sector {depende de} CRUD Lugar|
 |Listado<br>+<br>detalle| 1. Listado de Eventos filtrable por nombre y tipo, mostrando nombre, descripción, precio “desde” y fecha → detalle del evento muestra con estado, tipo, lugar, sectores disponibles, y si el evento/sector es enumerado o no enumerado.<br> 2. Listado de eventos filtrado por tipo del evento, muestra nombre de evento e imagen => detalle muestra nombre, descripción, precio “desde”, fecha, estado, tipo, lugar, sectores disponibles.|
-|CUU/Epic|1. Comprar entradas para un evento publicado, contemplando flujo enumerado (selección de asientos en mapa dentro del sector) y flujo no enumerado (cantidad por sector).<br>2. Crear evento por organizador (queda pendiente), y publicar al ser aprobado por un administrador.
+|CUU/Epic|1. Comprar entradas para un evento publicado, contemplando flujo enumerado (selección de asientos en mapa dentro del sector) y flujo no enumerado (cantidad por sector).<br>2. Crear evento por organizador (queda pendiente), y publicar al ser aprobado por un administrador.|
 
 
 Adicionales para Aprobación
 |Req|Detalle|
 |:-|:-|
 |CRUD |1. CRUD Usuario<br>2. CRUD Entrada<br>3. CRUD Evento<br>4. CRUD Sector<br>5. CRUD Venta<br>6. CRUD Precio<br>7. CRUD Lugar<br>8. CRUD ComisionEntrada<br>9. CRUD TipoEvento<br>10. CRUD Butaca<br>11. CRUD LineaVenta|
-|CUU/Epic|1. Comprar una entrada para un evento habilitado<br>2. Crear un evento para una fecha determinada<br>3. Evaluar evento pendiente|
+|CUU/Epic|1. Comprar una entrada para un evento publicado<br>2. Crear un evento.<br>3. Aprobar/rechazar eventos pendientes.<br>4. Destacar eventos|
 
 
 ### Alcance Adicional Voluntario
@@ -56,7 +56,7 @@ Adicionales para Aprobación
 
 |Req|Detalle|
 |:-|:-|
-|Listados |1. Eventos filtrados por Lugar, muestra los datos del evento.|
-|CUU/Epic|1. Cancelar evento<br>2. Modificar evento|
-|Otros|1. Envío de recordatorio de evento (cancelaciòn, modificaciòn y dìas antes de la fecha) por email.|
+|Listados |1. Eventos filtrados por descripcion parcial y tipo de evento. Muestra los datos del evento.|
+|CUU/Epic|1. Destacar evento<br>2.  Ver historial de compras del usuario con tickets descargables.|
+|Otros|1. Ayuda.<br>2. Preguntas frecuentes<br>3. Sobre TicketApp.|
 
