@@ -125,11 +125,11 @@ npx playwright test --headed
 ---
 
 ## Documentación de la API
-link al docs
+[Link](https://github.com/valenpeppi/tp/blob/main/docs.md)
 
 ---
 
 ## Contacto
-Email: gianzabaleta6@hotmail.com
+Email: gianzabaleta6@hotmail.com<br>
 Teléfono: 2478509639
 
