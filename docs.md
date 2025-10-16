@@ -96,8 +96,107 @@
 ## Tracking de features, bugs e issues
 
 
+### 1) [BE] PrismaClientValidationError en `getSectorsByPlace`
+Síntoma: error al invocar `prisma.sector.findMany()` por tipado/parsing del `idPlace` recibido como `string`.  
+Impacto: endpoint `/api/places/:idPlace/sectors` caía con 500.  
+Acción: conversión explícita `Number(idPlace)` y manejo de error con `details: error.message`.   
+Refs: `src/places/places.controller.ts`
 
+---
 
+### 2) [TEST][FE] Timeout E2E al esperar `/cart` (flujo compra mixta)
+Síntoma: `buy.e2e.spec.ts` fallaba por selector de cantidad inexistente cuando el evento ofrecía entradas enumeradas o no enumeradas de forma condicional.  
+Impacto: test se quedaba en “Waiting for navigation to /cart”.   
+Refs: `react-app/tests/buy.e2e.spec.ts`
+
+---
+
+### 3) [FE] Agrupación de ítems (enumeradas vs generales) en carrito
+Síntoma: Asientos enumerados y cantidades generales se mezclaban en el mismo grupo, rompiendo el POST a backend.  
+Impacto: totales erróneos y confirmaciones inconsistentes.  
+Acción: lógica `buildTicketGroups()` separa por `idEvent-idPlace-idSector` y sólo agrega `ids` cuando son enumeradas; para generales usa `quantity` donde see limpian IDs.
+Refs: `CartContext`.
+
+---
+
+### 4) [BE][PAY] Webhook Stripe
+Síntoma: confirmaciones duplicadas cuando llegaban reintentos.  
+Impacto: ventas confirmadas dos veces o ignoradas sin trazabilidad.  
+Acción: chequeo previo de `seatEvent.state='sold'`, y rutas de “release” para devolver `reserved → available` en fallos/expiraciones.   
+Refs: `src/payments/stripe.webhook.ts`
+
+---
+
+### 5) [TEST][FE] Configuración Vitest + TS + JSDOM
+Síntoma: errores de tipos y ambiente de pruebas (matchers de jest-dom, tipos globales).  
+Impacto: tests de UI fallaban al montar componentes.  
+Acción: `vitest.config.ts` + `tsconfig.vitest.json` con `"types": ["vitest/globals", "@testing-library/jest-dom"]`, `environment: 'jsdom'`, `setupFiles`.  
+Refs: `react-app/vitest.config.ts`, `react-app/tsconfig.vitest.json`, `react-app/src/setupTests.ts`
+
+---
+
+### 6) [BE] Carga de `.env`
+Síntoma: log mostraba ` Cargando variables desde ${envFile}` y path de `.env.test`.  
+Impacto: confusión al cargar variables de entorno, especialmente en testeos.  
+Acción: TEMPLATE STRING real en `console.log`, y `dotenv.config({ path: path.resolve(envFile) })`.  
+Refs: `src/config/env.ts`
+
+---
+
+### 7) [DB][BE] Estados de `seatEvent`
+Síntoma: asientos quedaban “enganchados” en `reserved` bajo fallas/expiraciones o múltiples tabs.  
+Impacto: inventario “fantasma” no liberado y mal diseño UX.  
+Acción: `updateMany` en release; chequeos previos a confirmar; limpieza de `idSale/lineNumber` al liberar.  
+Refs: `src/payments/stripe.webhook.ts`
+
+---
+
+### 8) [FE] Fallback de imágenes y assets 404 en `EventDetail`
+Síntoma: imágenes remotas ausentes generaban 404/“broken image”.  
+Impacto: estética deteriorada.  
+Acción: assets locales (`estadio-arroyito`, `bioceres-arena`, `el-circulo`) como fallback.  
+Refs: `src/pages/eventDetail/EventDetailPage.*`
+
+---
+
+### 9) [TEST][BE] Mocks de Prisma en unit tests
+Síntoma: unit tests dependían del DB real o se rompían por retorno de tipos.  
+Acción: mock estático de `prisma` (findMany/… con `jest.fn()`), limpieza de mocks en `beforeEach`.  
+Refs: `src/places/places.controller.test.ts`
+
+---
+
+### 10) [SEC][BE] Endpoints sensibles
+Síntoma: riesgo de replay/brute-force sobre `/payments/*`.  
+Impacto: Riesgos de doble proceso.  
+Acción: `webhookRateLimit` y límites razonables aplicados a rutas de pago.  
+Refs: `src/middlewares/rateLimit.ts`, `src/payments/*.routes.ts`
+
+---
+
+### 11) [FE] Validaciones de login y manejo de errores HTTP
+Síntoma: confusión entre mensajes 401/422 y estados locales; ausencia de limpieza de mensajes previos.  
+Impacto: UX inconsistente al reintentar login.  
+Acción: tests que cubren vacíos, formato de email, 401; mocks de Axios tipados; `clearMessages()` al iniciar. 
+Refs: `src/pages/login/LoginUser.test.tsx`
+
+---
+
+### 12) [FE] Puntos de quiebre y layout.
+Síntoma: solapamientos en modales/overlays en móviles y “tablet” al rotar.  
+Impacto: imposibilidad de seleccionar asiento/cantidad.  
+Acción: CSS Modules con breakpoints y grid/areas más conservadoras en modal. 
+Refs: `seatSelector/styles/*.module.css`
+
+---
+
+### 13) [BE] ConfirmSale vía webhook
+Síntoma: `SalesController.confirmSale` esperaba shape específico (`body: { dniClient, tickets }` y `auth.dni`).  
+Impacto: confirmación no hacía flujo correcto de usuario/venta.  
+Acción: armado explícito de `mockReq`/`mockRes` y logs controlados en webhook.  
+Refs: `src/payments/stripe.webhook.ts`
+
+---
 
 ## DOCUMENTACION DE LA API
 
