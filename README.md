@@ -25,7 +25,7 @@ Tener instalado:
 
 ---
 
-### Clonar los repositorios
+## Clonar los repositorios
 
 ```bash
 # Clonar el frontend
@@ -38,7 +38,7 @@ cd BackEnd-Venta-de-Entradas
 
 ```
 
-### Configurar base de datos
+## Configurar base de datos
 
 ```bash
 # Crear el archivo .env en el backend
@@ -65,7 +65,7 @@ STRIPE_WEBHOOK_SECRET=
 npx prisma migrate reset
 
 ```
-### Ejecutar el backend
+## Ejecutar el backend
 
 ```bash
 cd BackEnd-Venta-de-Entradas
@@ -73,7 +73,7 @@ npm install
 npm run dev
 
 ```
-### Ejecutar el frontend
+## Ejecutar el frontend
 
 ```bash
 cd FrontEnd-Venta-de-Entradas
@@ -81,3 +81,41 @@ npm install
 npm run dev
 
 ```
+
+## Credenciales de prueba
+
+| ROL | EMAIL | CONTRASEÑA |
+|------|-------------|--------------|
+| **Usuario** | gian@hotmail.com | gian |
+| **Administrador** | peppi@gmail.com | peppi |
+| **Organizador** | sbrolla@gmail.com | peppi |
+
+
+## Ejecucion de test
+
+### Backend - JEST
+
+```bash
+npm run test
+
+```
+### Frontend - VITEST
+
+```bash
+npm run test
+
+```
+
+### E2E - PLAYWRIGHT
+
+```bash
+npx playwright test --headed
+
+```
+
+## Video demostrativo
+link al video
+
+## Documentación de la API
+link al docs
+
