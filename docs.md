@@ -4,6 +4,18 @@
 
 ---
 
+## Minuta mensual de avance en el proyecto
+
+
+
+
+
+## Tracking de features, bugs e issues
+
+
+
+
+
 ## DOCUMENTACION DE LA API
 
 
