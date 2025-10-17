@@ -10,12 +10,15 @@
 
 - Definición de idea. Entrega de la proposal. Creación del Modelo entidad-relación
 - Definición de los requerimientos tecnicos y funcionales.
+
 ---
 
 ### Mayo 2025 — Aprendizaje
 
 -Primeros conocimientos de los lenguajes a utilizar en la aplicación.
 -Definición grupal de tecnologías a implementar
+
+---
 
 ### Junio 2025 — Kickoff 
 
