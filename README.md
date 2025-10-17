@@ -98,23 +98,34 @@ npm run dev
 
 ## Ejecucion de test
 
-### Backend - JEST
+### BackEnd
+
+#### Backend Unitarios - JEST 
 
 ```bash
-npm run test
-
-```
-### Frontend - VITEST
-
-```bash
-npm run test
+npm run test:unit
 
 ```
 
-### E2E - PLAYWRIGHT
+#### Backend Integration - JEST
 
 ```bash
-npx playwright test --headed
+npm run test:integration
+
+```
+### FrontEnd
+
+#### Frontend Unitario - VITEST
+
+```bash
+npm run test:unit
+
+```
+
+#### E2E - PLAYWRIGHT
+
+```bash
+npm run test:e2e
 
 ```
 
