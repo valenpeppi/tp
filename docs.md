@@ -275,7 +275,7 @@ Refs: `src/payments/stripe.webhook.ts`
 
 ### Autenticacion y usuarios
 
-### POST /api/auth/register
+#### POST /api/auth/register
 - *Descripcion:* alta de usuario final con verificacion reCAPTCHA.
 - *Auth:* no requiere.
 - *Body (JSON):*
@@ -339,15 +339,7 @@ Refs: `src/payments/stripe.webhook.ts`
 - *Respuesta 200:* { "valid": true, "user": { ...payload } }.
 - *Errores:* 401 token faltante o 403 token invalido/expirado.
 
-#### GET /api/users/
-- *Descripcion:* lista completa de usuarios (pensado para uso interno/admin).
-- *Auth:* no protegida en el router actual.
-- *Respuesta 200:* array de registros de la tabla user.
 
-#### POST /api/users/
-- *Descripcion:* crea un usuario sin reCAPTCHA (utilizado por herramientas internas o tests).
-- *Body:* debe incluir dni, name, surname, mail, birthDate, password.
-- *Respuestas:* 201 con message e userId, 400 campos faltantes, 409 duplicado (codigo Prisma P2002), 500 error interno.
 
 ### Lugares y sectores
 
