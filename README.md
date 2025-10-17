@@ -78,6 +78,7 @@ npm run dev
 
 ```bash
 cd FrontEnd-Venta-de-Entradas
+cd react-app
 npm install
 npm run dev
 
