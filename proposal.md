@@ -38,17 +38,17 @@ Link de Draw.io: https://app.diagrams.net/#G1JQ4jZBuJwJ3PSq4Bxjy0-jp5qHoPxyZK#%7
 Regularidad:
 |Req|Detalle|
 |:-|:-|
-|CRUD simple|1. CRUD TipoEvento<br>2. CRUD Usuario <br>3. CRUD Lugar|
+|CRUD simple|1. CRUD TipoEvento<br>2. CRUD Usuario <br>3. CRUD Lugar <br>4. CRUD Organizador|
 |CRUD dependiente|1. CRUD Precio {depende de} Sector y Evento<br>2. CRUD Evento {depende de} Lugar y TipoEvento<br>3.CRUD Sector {depende de} CRUD Lugar|
 |Listado<br>+<br>detalle| 1. Listado por nombre de evento, mostrando nombre, descripción, precio “desde” y fecha → detalle del evento muestra con estado, tipo, lugar, sectores disponibles, y si el evento/sector es enumerado o no enumerado.<br> 2. Listado por tipo de evento, muestra nombre de evento e imagen => detalle muestra nombre, descripción, precio “desde”, fecha, estado, tipo, lugar, sectores disponibles.|
-|CUU/Epic|1. Comprar entradas para un evento publicado, contemplando flujo enumerado (selección de asientos en mapa dentro del sector) y flujo no enumerado (cantidad por sector).<br>2. Crear evento por organizador (queda pendiente), y publicar al ser aprobado por un administrador.|
+|CUU/Epic|1. Comprar entradas para un evento publicado, contemplando flujo enumerado (selección de asientos en mapa dentro del sector) y flujo no enumerado (cantidad por sector).<br>2. Crear evento por organizador (quedando el evento en estado pendiente), y se publica al ser aprobado por un administrador.|
 
 
 Adicionales para Aprobación Directa
 |Req|Detalle|
 |:-|:-|
 |CRUD |1. CRUD Usuario<br>2. CRUD Entrada<br>3. CRUD Evento<br>4. CRUD Sector<br>5. CRUD Venta<br>6. CRUD Precio<br>7. CRUD Lugar<br>8. CRUD TipoEvento<br>9. CRUD Butaca<br>10. CRUD LineaVenta|
-|CUU/Epic|1. Comprar una entrada para un evento publicado<br>2. Crear un evento.<br>3. Aprobar/rechazar eventos pendientes.<br>4. Destacar eventos|
+|CUU/Epic|1. Crear un evento.<br>2. Aprobar/rechazar eventos pendientes.<br>3. Destacar Evento.<br>4. Comprar una entrada para un evento publicado.|
 
 
 ### Alcance Adicional Voluntario
@@ -58,7 +58,7 @@ Adicionales para Aprobación Directa
 |:-|:-|
 |Listados |1. Eventos filtrados por descripcion parcial y tipo de evento. Muestra los datos del evento.|
 |CUU/Epic|1. Asistente virtual de guiado.<br>2.  Ver historial de compras del usuario con tickets descargables.|
-|Otros|1. Ayuda.<br>2. Preguntas frecuentes.<br>3. Sobre TicketApp.|
+|Otros|1. Centro de Ayuda.<br>2. Preguntas frecuentes.<br>3. Sobre TicketApp.<br>4. Términos y condiciones.|
 
 ---
 
