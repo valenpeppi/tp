@@ -2,10 +2,10 @@
 
 ## Grupo
 ### Integrantes
- 52588 - Peppino, Valentin<br>
- 52211 - Santinelli, Agustin<br>
+ 52588 - Peppino, Valentín<br>
+ 52211 - Santinelli, Agustín<br>
  52425 - Zabaleta, Gianlucas<br>
- 52398 - Ratti, Martin<br>
+ 52398 - Ratti, Martín<br>
 
 ### Repositorios
 * [Frontend](https://github.com/valenpeppi/FrontEnd-Venta-de-Entradas)
