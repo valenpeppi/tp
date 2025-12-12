@@ -10,7 +10,7 @@
 | **Backend** | Node.js + Express | API REST modular, con controladores, validaciones y manejo de errores. |
 | **ORM / DB** | Prisma ORM + MySQL | Mapeo de modelos relacionales y migraciones automáticas. |
 | **Autenticación** | JWT + Bcrypt | Registro e inicio de sesión seguros. |
-| **Pagos** | Stripe / MercadoPago | Integración para pagos en línea simulados y reales. |
+| **Pagos** | Stripe | Integración para pagos en línea simulados y reales. |
 | **Tests** | Vitest / Jest / Playwright | Pruebas unitarias, de integración y end-to-end. |
 
 ---
@@ -56,11 +56,17 @@ BACKEND_URL=http://localhost:3000
 
 # Clave secreta de reCAPTCHA
 RECAPTCHA_SECRET_KEY=
-#Clave MP
-MP_ACCESS_TOKEN=
+
 #Clave Stripe
 STRIPE_SECRET_KEY=
 STRIPE_WEBHOOK_SECRET=
+
+#Autenticación Google
+VITE_GOOGLE_CLIENT_ID=740798451772-4rsagk67347ti893tb1k290o52uv87vs.apps.googleusercontent.com 
+
+# Email Service
+EMAIL_USER=ticketapp15@gmail.com
+EMAIL_PASS="bbkawrefeqezufei"
 
 # Ejecutar migraciones y seeds iniciales
 npx prisma migrate reset
@@ -78,7 +84,6 @@ npm run dev
 
 ```bash
 cd FrontEnd-Venta-de-Entradas
-cd react-app
 npm install
 npm run dev
 
