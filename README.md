@@ -127,10 +127,10 @@
 <p>Debes clonar ambos repositorios en carpetas adyacentes:</p>
 
 <pre><code># Clonar Frontend
-git clone https://github.com/tu-usuario/FrontEnd-Venta-de-Entradas.git
+git clone https://github.com/valenpeppi/FrontEnd-Venta-de-Entradas.git
 
 # Clonar Backend
-git clone https://github.com/tu-usuario/BackEnd-Venta-de-Entradas.git
+git clone https://github.com/valenpeppi/BackEnd-Venta-de-Entradas.git
 </code></pre>
 
 <h3>3️⃣ Configuración del Backend</h3>
