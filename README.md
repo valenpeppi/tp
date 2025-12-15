@@ -1,7 +1,7 @@
 <h1>🏠 TicketApp – Repositorio Central</h1>
 
 <p align="center">
-  <a href="https://github.com/agussantinelli/FrontEnd-Venta-de-Entradas" target="_blank" style="text-decoration: none;">
+  <a href="https://github.com/valenpeppi/FrontEnd-Venta-de-Entradas" target="_blank" style="text-decoration: none;">
     <img src="https://img.shields.io/badge/💻%20Ir%20al%20Frontend-React%20%7C%20Vite-0b7285?style=for-the-badge&logo=react&logoColor=white" alt="Repo Frontend"/>
   </a>
   <a href="https://github.com/valenpeppi/BackEnd-Venta-de-Entradas" target="_blank" style="text-decoration: none;">
