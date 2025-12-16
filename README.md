@@ -158,7 +158,7 @@ GOOGLE_CLIENT_ID=tu_google_client_id
 
 # Servicio de Email
 EMAIL_USER=ticketapp15@gmail.com
-EMAIL_PASS="bbkawrefeqezufei"
+EMAIL_PASS=""
 </code></pre>
 
 <h3>4️⃣ Configuración del Frontend</h3>
