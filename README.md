@@ -242,7 +242,7 @@ npm run test:e2e
 <h2>📺 Demo y Documentación</h2>
 
 <p align="center">
-  <a href="https://www.youtube.com/watch?v=8xIs6wFfBYE" target="_blank">
+  <a href="https://youtu.be/UICpO64qw9c" target="_blank">
     <img src="https://img.shields.io/badge/🎥%20Ver%20Video%20Demo-YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="Video Demo"/>
   </a>
   <a href="https://github.com/valenpeppi/tp/blob/main/docs.md" target="_blank">
