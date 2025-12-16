@@ -245,41 +245,44 @@ Refs: `src/payments/stripe.webhook.ts`
 
 ### Base URL y conceptos globales
 
-- Servidor HTTP: http://localhost:3000 (puerto configurable via PORT).
-- Prefijo comun de la API: /api.
-- Archivos estaticos (imagenes de eventos): GET /uploads/<nombre_archivo>.
+- **Servidor HTTP**: `http://localhost:3000` (puerto configurable via `PORT`).
+- **Prefijo común de la API**: `/api`.
+- **Archivos estáticos** (imágenes de eventos): `GET /uploads/<nombre_archivo>`.
 
-#### Autenticacion
+#### Autenticación
 
-- Se utiliza JWT con esquema Authorization: Bearer <token>.
-- Los tokens de usuarios finales se obtienen en POST /api/auth/login.
-- Los tokens de empresas organizadoras se obtienen en POST /api/auth/login-company.
-- Endpoints protegidos agregan verifyToken; algunos requieren ademas isCompany o isAdmin.
-- Los tokens incluyen un bootId. Si el servidor se reinicia y cambia el bootId, los tokens previos quedan invalidados (respuesta 401 con codigo RESTART_INVALIDATED_TOKEN).
+- Se utiliza **JWT** con esquema `Authorization: Bearer <token>`.
+- Los tokens de usuarios finales se obtienen en `POST /api/auth/login`.
+- Los tokens de empresas organizadoras se obtienen en `POST /api/auth/login-company`.
+- Endpoints protegidos agregan `verifyToken`; algunos requieren además `isCompany` o `isAdmin`.
+- Los tokens incluyen un `bootId`. Si el servidor se reinicia y cambia el `bootId`, los tokens previos quedan invalidados (respuesta `401` con código `RESTART_INVALIDATED_TOKEN`).
 
 #### Formato de respuestas y errores
 
-- Controladores publicos suelen devolver 200 con datos crudos o { ok: true, data: ... }.
-- Errores controlados incluyen un mensaje en castellano y, en algunos casos, details.
-- Errores de validacion usan 400, falta de autenticacion 401, falta de permisos 403, no encontrado 404, conflictos 409, error interno 500.
+- Controladores públicos suelen devolver `200` con datos crudos o `{ ok: true, data: ... }`.
+- Errores controlados incluyen un mensaje en castellano y, en algunos casos, `details`.
+- Errores de validación usan `400`, falta de autenticación `401`, falta de permisos `403`, no encontrado `404`, conflictos `409`, error interno `500`.
 
-### Sistema
+---
 
-#### GET /api/system/boot
-- *Descripcion:* expone el identificador de arranque actual del backend.
-- *Auth:* no requiere.
-- *Respuesta 200:*
-  json
-  { "bootId": "uuid-o-similar" }
-  
+### Endpoints del Sistema
 
-### Autenticacion y usuarios
+#### `GET /api/system/boot`
+- **Descripción:** Expone el identificador de arranque actual del backend para validar la vigencia de tokens.
+- **Auth:** No requiere.
+- **Respuesta 200:**
+  ```json
+  { "bootId": "uuid-..." }
+  ```
 
-#### POST /api/auth/register
-- *Descripcion:* alta de usuario final con verificacion reCAPTCHA.
-- *Auth:* no requiere.
-- *Body (JSON):*
-  json
+---
+
+### Autenticación y Usuarios
+
+#### `POST /api/auth/register`
+- **Descripción:** Alta de usuario final con verificación reCAPTCHA.
+- **Body:**
+  ```json
   {
     "dni": 12345678,
     "name": "Juan",
@@ -287,304 +290,269 @@ Refs: `src/payments/stripe.webhook.ts`
     "mail": "juan@example.com",
     "password": "Secreta123",
     "birthDate": "2000-01-31",
-    "captchaToken": "<token_recaptcha_v2>"
+    "captchaToken": "<token_recaptcha>"
   }
-  
-- *Respuestas:*
-  - 201 registro exitoso ({ "message": "Usuario registrado correctamente." }).
-  - 400 campos faltantes o DNI invalido / CAPTCHA invalido.
-  - 409 DNI o email repetido.
+  ```
+- **Respuesta 201:** `{"message": "Usuario registrado correctamente."}`
+- **Errores:**
+    - `400`: Campos faltantes, contraseña débil, CAPTCHA inválido.
+    - `409`: DNI o Email ya registrados.
 
-#### POST /api/auth/register-company
-- *Descripcion:* alta de empresa organizadora con reCAPTCHA.
-- *Body (JSON):*
-  json
+#### `POST /api/auth/register-company`
+- **Descripción:** Alta de empresa organizadora con verificación reCAPTCHA.
+- **Body:**
+  ```json
   {
     "companyName": "Eventos SRL",
     "cuil": "30-12345678-9",
     "contactEmail": "contacto@eventos.com",
     "password": "Clave123",
-    "phone": "1122334455",
-    "address": "Av. Siempre Viva 123",
-    "captchaToken": "<token_recaptcha_v2>"
+    "phone": "341...",
+    "address": "Calle Falsa 123",
+    "captchaToken": "<token_recaptcha>"
   }
-  
-- *Respuestas:* 201 exito, 400 faltante, 409 CUIL o email repetido.
+  ```
+- **Respuesta 201:** `{"message": "Empresa registrada exitosamente"}`
+- **Errores:**
+    - `400`: Campos faltantes o contraseña débil.
+    - `409`: CUIL o Email ya registrados (incluso si el mail pertenece a un usuario).
 
-#### POST /api/auth/login
-- *Descripcion:* login de usuario final.
-- *Body:* { "mail": "juan@example.com", "password": "Secreta123" }.
-- *Respuesta 200:*
-  json
+#### `POST /api/auth/login`
+- **Descripción:** Login de usuario final.
+- **Body:** `{"mail": "...", "password": "..."}`
+- **Respuesta 200:**
+  ```json
   {
-    "token": "<jwt>",
-    "user": {
-      "dni": 12345678,
-      "mail": "juan@example.com",
-      "name": "Juan",
-      "role": "user"
-    }
+    "token": "eyJhbG...",
+    "user": { "dni": 123.., "role": "user", ... }
   }
-  
-- *Errores:* 400 faltan credenciales, 401 credenciales invalidas.
+  ```
+- **Errores:** `401` Credenciales inválidas.
 
-#### POST /api/auth/login-company
-- *Descripcion:* login de empresas organizadoras.
-- *Body:* { "contactEmail": "contacto@eventos.com", "password": "Clave123" }.
-- *Respuesta 200:* token y datos basicos de la empresa.
-
-#### GET /api/auth/validate
-- *Descripcion:* valida un token vigente y devuelve el payload.
-- *Auth:* requiere Authorization con JWT valido.
-- *Respuesta 200:* { "valid": true, "user": { ...payload } }.
-- *Errores:* 401 token faltante o 403 token invalido/expirado.
-
-
-
-### Lugares y sectores
-
-#### GET /api/places/getPlaces
-- *Descripcion:* devuelve lugares ordenados alfabeticamente.
-- *Auth:* no requiere.
-- *Respuesta 200:* array de objetos place.
-
-#### GET /api/places/:idPlace/sectors
-- *Descripcion:* sectores definidos para un lugar (con campos crudos de la tabla sector).
-- *Auth:* no requiere.
-- *Respuesta 200:* array de sectores.
-
-
-### Eventos
-
-#### POST /api/events/createEvent
-- *Descripcion:* crea un evento nuevo (solo empresas).
-- *Auth:* requiere verifyToken + isCompany.
-- *Body:* multipart/form-data con:
-  - Campos de texto: name, description, date (ISO o formato parseable por JS), idEventType, idPlace.
-  - sectors: cadena JSON con formato [{ "idSector": 1, "price": 1500.0 }].
-  - image (opcional): archivo JPG/PNG/GIF/WEBP <= 5 MB.
-- *Validaciones destacadas:* longitud maxima de nombre (45) y descripcion (255), fecha valida, existencia de organizador/tipo de evento/lugar, al menos un sector con precio.
-- *Respuesta 201:*
-  json
+#### `POST /api/auth/login-company`
+- **Descripción:** Login de empresas organizadoras.
+- **Body:** `{"contactEmail": "...", "password": "..."}`
+- **Respuesta 200:**
+  ```json
   {
-    "ok": true,
-    "message": "Evento creado exitosamente",
-    "data": {
-      "idEvent": 10,
-      "name": "Show",
-      "state": "Pending",
-      "image": "/uploads/event-...png",
-      "imageUrl": "http://localhost:3000/uploads/event-...png",
-      "...": "otros campos del evento"
-    },
-    "availableSeats": 120
+    "token": "eyJhbG...",
+    "user": { "idOrganiser": "...", "role": "company", ... }
   }
-  
-- *Errores:* 400 validacion, 403 token no autorizado o sin rol company, 500 errores al guardar o generar asientos.
+  ```
 
-#### GET /api/events/event-types
-- *Descripcion:* lista simple de tipos de evento.
-- *Auth:* publica.
-- *Respuesta 200:* array crudo de eventType.
+#### `GET /api/auth/validate`
+- **Descripción:** Valida si el token actual sigue activo y devuelve el payload.
+- **Auth:** Requiere Token.
+- **Respuesta 200:** `{"valid": true, "user": { ... }}`
+- **Errores:** `401` No autorizado, `403` Token inválido.
 
-#### GET /api/events/types
-- *Descripcion:* lista de tipos de evento con envoltura { ok, data }.
-- *Auth:* publica.
+#### `POST /api/auth/google`
+- **Descripción:** Login o Registro mediante Google OAuth.
+- **Body:** `{"credential": "<google_token_id>"}`
+- **Respuesta 200:** `{"token": "...", "user": { ... }}`
+- **Errores:** `401` Token Google inválido.
 
-#### GET /api/events/pending
-- *Descripcion:* eventos pendientes de aprobacion para pantalla de admin.
-- *Auth:* requiere token de usuario con rol admin.
-- *Respuesta 200:* { "ok": true, "data": [ { ...evento, "imageUrl": "..."} ] }.
+#### `POST /api/auth/check-password-strength`
+- **Descripción:** Evalúa la seguridad de una contraseña.
+- **Body:** `{"password": "..."}`
+- **Respuesta 200:** `{"strength": "medium", "score": 50, "feedback": [...]}`
 
-#### GET /api/events/all
-- *Descripcion:* todos los eventos (cualquier estado) para admin.
-- *Auth:* requiere admin.
+#### `POST /api/auth/forgot-password`
+- **Descripción:** Envía email para recuperación de contraseña.
+- **Body:** `{"mail": "..."}`
+- **Respuesta 200:** `{"message": "Si el correo existe..."}`
 
-#### PATCH /api/events/:id/approve
-- *Descripcion:* marca un evento como Approved.
-- *Auth:* requiere admin.
-- *Respuesta 200:* { "ok": true, "data": { "idEvent": 1, "state": "Approved", "imageUrl": "..." } }.
+#### `POST /api/auth/reset-password`
+- **Descripción:** Establece nueva contraseña con token de recuperación.
+- **Body:** `{"token": "...", "newPassword": "..."}`
+- **Respuesta 200:** `{"message": "Contraseña actualizada correctamente."}`
 
-#### PATCH /api/events/:id/reject
-- *Descripcion:* marca un evento como Rejected.
-- *Auth:* requiere admin.
+#### `POST /api/auth/change-password`
+- **Descripción:** Cambia la contraseña del usuario logueado.
+- **Auth:** Requiere Token.
+- **Body:** `{"currentPassword": "...", "newPassword": "..."}`
+- **Respuesta 200:** `{"message": "Contraseña actualizada correctamente."}`
 
-#### PATCH /api/events/:id/feature
-- *Descripcion:* alterna el flag featured del evento.
-- *Auth:* requiere admin.
-- *Respuesta 200:* { "ok": true, "data": { "idEvent": 1, "featured": true } }.
+#### `PUT /api/auth/profile`
+- **Descripción:** Actualiza datos del perfil (nombre, teléfono).
+- **Auth:** Requiere Token.
+- **Body:** `{"name": "...", "surname": "...", "phone": "..."}`
+- **Respuesta 200:** `{"ok": true, "message": "Perfil actualizado", "user": ...}`
 
-#### GET /api/events/featured
-- *Descripcion:* eventos aprobados y destacados.
-- *Auth:* publica.
-- *Respuesta 200:* { "ok": true, "data": [ { "availableSeats": 50, "minPrice": 1500, "agotado": false, ... } ] }.
+---
 
-#### GET /api/events/approved
-- *Descripcion:* eventos aprobados con stock disponible.
-- *Auth:* publica.
-- *Respuesta 200:* { "ok": true, "data": [ ... ] } (se filtran los agotados).
+### Lugares y Sectores
 
-#### GET /api/events/available-dates/:idPlace
-- *Descripcion:* fechas ocupadas (Approved o Pending) para un lugar.
-- *Respuesta 200:* { "ok": true, "data": ["2025-10-20", "2025-10-21"] }.
+#### `GET /api/places/getPlaces`
+- **Descripción:** Lista todos los lugares ordenados alfabéticamente.
+- **Respuesta 200:** `[{ "idPlace": "...", "name": "...", ... }]`
 
-#### GET /api/events/events/:id
-- *Descripcion:* resumen para la ficha del evento.
-- *Respuesta 200:* 
-  json
+#### `GET /api/places/:idPlace/sectors`
+- **Descripción:** Obtiene los sectores de un lugar.
+- **Respuesta 200:** `[{ "idSector": 1, "name": "Platea", "sectorType": "enumerated" }]`
+
+---
+
+### Eventos (Público)
+
+#### `GET /api/events/approved`
+- **Descripción:** Listado principal de eventos aprobados y con stock.
+- **Respuesta 200:** `{"ok": true, "data": [{ "idEvent": "...", "availableSeats": 50, ... }]}`
+
+#### `GET /api/events/featured`
+- **Descripción:** Listado de eventos destacados.
+- **Respuesta 200:** `{"ok": true, "data": [...]}`
+
+#### `GET /api/events/search`
+- **Descripción:** Busca eventos por nombre o tipo.
+- **Query:** `?query=recital`
+- **Respuesta 200:** `{"ok": true, "data": [...]}`
+- **Errores:** `400` Consulta vacía o muy corta.
+
+#### `GET /api/events/available-dates/:idPlace`
+- **Descripción:** Devuelve fechas ocupadas en un lugar para validación de calendario.
+- **Respuesta 200:** `{"ok": true, "data": ["2025-10-20", ...]}`
+
+#### `GET /api/events/events/:id`
+- **Descripción:** Detalle resumido del evento.
+- **Respuesta 200:**
+  ```json
   {
     "ok": true,
     "data": {
-      "id": 5,
-      "eventName": "Show",
-      "description": "...",
-      "type": "Recital",
-      "date": "2025-11-20T23:00:00.000Z",
-      "placeName": "...",
-      "placeType": "enumerated",
-      "availableTickets": 80,
-      "agotado": false,
-      "imageUrl": "http://localhost:3000/uploads/...",
-      "minPrice": 2500
+      "id": "...", "eventName": "Show", "minPrice": 5000, "agotado": false, ...
     }
   }
-  
+  ```
 
-#### GET /api/events/events/:id/sectors
-- *Descripcion:* sectores del evento con precio y disponibilidad.
-- *Respuesta 200:* { "ok": true, "data": [ { "idSector": 1, "name": "...", "price": 3500, "enumerated": true, "availableTickets": 20 } ] }.
+#### `GET /api/events/events/:id/sectors`
+- **Descripción:** Sectores del evento con precios y disponibilidad.
+- **Respuesta 200:**
+  ```json
+  { "ok": true, "data": [{ "idSector": 1, "price": 5000, "availableTickets": 20 }] }
+  ```
 
-#### GET /api/events/events/:id/sectors/:idSector/seats
-- *Descripcion:* estados de los asientos del sector respecto del evento.
-- *Respuesta 200:* { "ok": true, "data": [ { "id": 12, "state": "available", "label": "12" } ] }.
+#### `GET /api/events/events/:id/tickets/map`
+- **Descripción:** Mapa optimizado de asientos disponibles.
+- **Respuesta 200:** `{"ok": true, "data": { "place-sector-seat": seatId, ... }}`
 
-#### GET /api/events/events/:id/tickets/map
-- *Descripcion:* mapa de asientos disponibles para key rapida ("<idPlace>-<idSector>-<idSeat>").
-- *Respuesta 200:* { "ok": true, "data": { "1-2-15": 15, "1-2-16": 16 } }.
+---
 
-#### GET /api/events/search?query=texto
-- *Descripcion:* buscador (prefijo en nombre del evento o match exacto en tipo).
-- *Respuesta 200:* { "ok": true, "data": [ { "id": 5, "name": "...", "price": 2500, "availableSeats": 30, "agotado": false } ] }.
-- *Errores:* 400 consulta demasiado corta.
+### Eventos (Gestión Empresa)
 
-### Asientos
+#### `POST /api/events/createEvent`
+- **Descripción:** Crea un evento (Estado: Pending). Valida contenido con IA.
+- **Auth:** Requiere Token (Rol Company).
+- **Body (FormData):** `name`, `description`, `date`, `idPlace`, `sectors` (JSON), `image` (File).
+- **Respuesta 201:** `{"ok": true, "message": "Evento creado...", "data": ...}`
+- **Errores:** `400` Contenido inapropiado (IA) o datos inválidos.
 
-#### GET /api/seats/events/:idEvent/sectors/:idSector/seats
-- *Descripcion:* fuente secundaria para obtener asientos del evento/sector (incluye label real si existe).
-- *Respuesta 200:*
-  json
-  {
-    "data": [
-      { "id": 1, "label": "Fila A Asiento 1", "state": "available" }
-    ]
-  }
-  
+#### `GET /api/events/company`
+- **Descripción:** Lista los eventos creados por la empresa logueada.
+- **Auth:** Requiere Token (Rol Company).
+- **Respuesta 200:** `{"ok": true, "data": [{ "idEvent": "...", "soldPercentage": 45.5, ... }]}`
+
+#### `PUT /api/events/:id`
+- **Descripción:** Edita un evento existente.
+- **Auth:** Requiere Token (Rol Company).
+- **Respuesta 200:** `{"ok": true, "message": "Evento actualizado"}`
+
+#### `DELETE /api/events/:id`
+- **Descripción:** Elimina un evento si no tiene ventas asociadas.
+- **Auth:** Requiere Token (Rol Company).
+- **Respuesta 200:** `{"ok": true, "message": "Evento eliminado"}`
+
+---
+
+### Eventos (Gestión Admin)
+
+#### `GET /api/events/pending`
+- **Descripción:** Eventos pendientes de aprobación.
+- **Auth:** Requiere Token (Rol Admin).
+
+#### `PATCH /api/events/:id/approve`
+- **Descripción:** Aprueba un evento (Pasa a estado Approved).
+- **Auth:** Requiere Token (Rol Admin).
+
+#### `PATCH /api/events/:id/reject`
+- **Descripción:** Rechaza un evento (Pasa a estado Rejected).
+- **Auth:** Requiere Token (Rol Admin).
+
+#### `PATCH /api/events/:id/feature`
+- **Descripción:** Marca/Desmarca un evento como destacado.
+- **Auth:** Requiere Token (Rol Admin).
+
+---
 
 ### Ventas
 
-#### POST /api/sales/confirm
-- *Descripcion:* confirma una venta y pasa asientos reserved a sold. Se usa internamente por los flujos de pago (no requiere token).
-- *Body (JSON):*
-  json
-  {
-    "dniClient": 12345678,
-    "tickets": [
-      {
-        "idEvent": 5,
-        "idPlace": 2,
-        "idSector": 1,
-        "ids": [101, 102]
-      }
-    ]
-  }
-  
-- *Reglas:* verifica existencia del usuario, limite de 6 tickets por evento (sumando compras previas), requiere que los asientos sigan en estado reserved.
-- *Respuesta 201:* { "message": "Venta confirmada", "idSale": 987 }.
-- *Errores:* 400 datos faltantes o excede limite, 404 usuario inexistente, 500 error al confirmar.
+#### `POST /api/sales/confirm`
+- **Descripción:** Confirma venta, asigna tickets y envía email. Uso interno.
+- **Body:** `{"dniClient": ..., "tickets": [...]}`
+- **Respuesta 201:** `{"message": "Venta confirmada", "idSale": "..."}`
 
-#### GET /api/sales/my-tickets
-- *Descripcion:* devuelve tickets vendidos al usuario autenticado.
-- *Auth:* requiere token de usuario (el DNI se toma del JWT).
-- *Respuesta 200:* { "data": [ { "id": "5-1", "eventId": 5, "sectorType": "enumerated", "seatNumber": 101, ... } ] }.
+#### `GET /api/sales/my-tickets`
+- **Descripción:** Historial de compras del usuario.
+- **Auth:** Requiere Token (User).
+- **Respuesta 200:** `{"data": [{ "eventName": "...", "qrUrl": "..." }]}`
 
-#### GET /api/sales/check?dniClient=12345678
-- *Descripcion:* verifica si existe una venta confirmada para ese DNI en los ultimos 5 minutos (se usa tras checkout).
-- *Respuesta 200:* { "confirmed": true, "idSale": 987 } o { "confirmed": false }.
-- *Errores:* 400 DNI invalido.
+#### `GET /api/sales/stats`
+- **Descripción:** Estadísticas globales del sistema (Ventas hoy, recaudación, etc.).
+- **Auth:** Requiere Token (Admin).
+- **Respuesta 200:** `{"salesToday": 10, "revenueToday": 50000, ...}`
 
-### Pagos - Stripe
+#### `GET /api/sales/company-stats`
+- **Descripción:** Estadísticas propias de la empresa.
+- **Auth:** Requiere Token (Company).
+- **Respuesta 200:** `{"activeEvents": 2, "ticketsSold": 150, "totalRevenue": 450000}`
 
-Las rutas de Stripe no exigen autenticacion porque son consumidas por el frontend tras un flujo de seleccion controlado.
+---
 
-#### POST /api/stripe/checkout
-- *Descripcion:* crea una sesion de Checkout y reserva asientos.
-- *Body (JSON):*
-  json
-  {
-    "items": [
-      { "name": "Entrada VIP", "amount": 350000, "quantity": 2 }
-    ],
-    "dniClient": 12345678,
-    "customerEmail": "comprador@example.com",
-    "ticketGroups": [
-      {
-        "idEvent": 5,
-        "idPlace": 2,
-        "idSector": 1,
-        "ids": [101, 102]
-      }
-    ]
-  }
-  
-  - amount esta expresado en centavos (ARS * 100).
-  - Para sectores nonEnumerated se debe enviar quantity; los IDs se asignan automaticamente.
-- *Respuesta 200:* { "url": "https://checkout.stripe.com/c/session..." }.
-- *Errores comunes:* 400 datos incompletos o asientos ya no disponibles, 500 error general.
+### Pagos (Stripe)
 
-#### POST /api/stripe/release
-- *Descripcion:* libera manualmente reservas (por ejemplo tras cancelar el flujo).
-- *Body:* { "ticketGroups": [ { "idEvent": 5, "idPlace": 2, "idSector": 1, "ids": [101, 102] } ] }.
-- *Respuesta 200:* { "released": 2 }.
+#### `POST /api/stripe/checkout`
+- **Descripción:** Inicia sesión de pago y reserva.
+- **Body:** `{"items": [...], "dniClient": ...}`
+- **Respuesta 200:** `{"url": "https://checkout.stripe.com/..."}`
 
-#### GET /api/stripe/confirm-session?session_id=...
-- *Descripcion:* fuerza la confirmacion de venta si el webhook no llego.
-- *Respuesta 200:* { "confirmed": true } o 409 si el pago aun no esta paid.
+#### `POST /api/stripe/webhook`
+- **Descripción:** Webhook para confirmar/liberar tickets según estado del pago.
+- **Auth:** Valida firma `Stripe-Signature`.
 
-#### POST /api/stripe/webhook
-- *Descripcion:* endpoint para webhooks de Stripe (montado como /api/stripe/webhook/).
-- *Headers:* requiere Stripe-Signature.
-- *Body:* JSON puro (Express usa express.raw).
-- *Eventos manejados:*
-  - checkout.session.completed / ...async_payment_succeeded: confirma la venta.
-  - checkout.session.expired, ...async_payment_failed, payment_intent.payment_failed: libera asientos.
-- *Proteccion:* rate limit 60 req/min.
+---
 
-### Pagos - MercadoPago 
+### Mensajes y Soporte
 
-#### POST /api/mp/checkout
-- *Descripcion:* crea una preferencia de pago y reserva asientos.
-- *Precondicion:* variables FRONTEND_URL, BACKEND_URL, MP_ACCESS_TOKEN deben estar configuradas.
-- *Body:* mismo contrato que Stripe (items, dniClient, customerEmail, ticketGroups).
-- *Respuesta 200:* { "preferenceId": "...", "init_point": "https://www.mercadopago.com/..." }.
+#### `POST /api/messages`
+- **Descripción:** Crea un nuevo mensaje de contacto.
+- **Body:** `{"title": "...", "description": "...", "senderEmail": "..."}`
+- **Respuesta 201:** `{"idMessage": "...", "state": "unread"}`
 
-#### GET /api/mp/confirm-payment?payment_id=...
-- *Descripcion:* consulta el pago en MP y, si esta aprobado, confirma la venta.
-- *Respuesta 200:* { "confirmed": true } o 409 si el pago aun no se aprobo.
+#### `GET /api/messages`
+- **Descripción:** Lista mensajes no descartados.
+- **Auth:** Requiere Token (Admin).
+- **Respuesta 200:** `[{ "state": "unread", "title": "...", ... }]`
 
-#### POST /api/mp/webhook
-- *Descripcion:* webhook de notificacion de MP (montado como /api/mp/webhook/).
-- *Flujo:* responde 200 inmediatamente; luego consulta la API de MP y, segun status, confirma o libera tickets.
+#### `PUT /api/messages/:id/reply`
+- **Descripción:** Responde un mensaje y notifica por email.
+- **Auth:** Requiere Token (Admin).
+- **Body:** `{"responseText": "..."}`
+- **Respuesta 200:** `{"message": "Mensaje respondido."}`
 
-### IA
+#### `PUT /api/messages/:id/reject`
+- **Descripción:** Rechaza un mensaje.
+- **Auth:** Requiere Token (Admin).
 
-#### POST /api/ai/
-- *Descripcion:* proxy que reenvia prompts a OpenRouter (DeepSeek/Gemma).
-- *Body:* { "message": "texto libre" }.
-- *Respuesta 200:* { "reply": "respuesta del modelo" }.
-- *Errores:* 400 sin mensaje, 504 timeout en ambos modelos.
+#### `PUT /api/messages/:id/discard`
+- **Descripción:** Mueve un mensaje a descartados (borrado lógico).
+- **Auth:** Requiere Token (Admin).
 
-### Notas adicionales
+---
 
-- Los asientos se generan automaticamente al crear eventos (createSeatEventGridForEvent).
-- Las rutas protegidas deben invocarse con el JWT mas reciente si el backend fue reiniciado (ver /api/system/boot).
-- uploads/ se genera automaticamente si no existe al subir imagenes de eventos
+### Inteligencia Artificial
+
+#### `POST /api/ai/`
+- **Descripción:** Chatbot asistente.
+- **Body:** `{"message": "Hola..."}`
+- **Respuesta 200:** `{"reply": "Soy el asistente de TicketApp..."}`
+
