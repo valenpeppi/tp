@@ -270,45 +270,9 @@ npm run test:e2e
 
 <h2>📞 Contacto</h2>
 
-<div align="center">
-  <table>
-    <tr>
-      <td align="center">
-        <a href="https://github.com/gianzaba">
-          <img src="https://avatars.githubusercontent.com/u/108630084?v=4" width="100px;" alt=""/>
-          <br />
-          <sub><b>Gianlucas Zabaleta</b></sub>
-        </a>
-        <br />
-        <a href="mailto:gianzabaleta6@hotmail.com">📧 gianzabaleta6@hotmail.com</a>
-      </td>
-      <td align="center">
-        <a href="https://github.com/valenpeppi">
-          <img src="https://avatars.githubusercontent.com/u/108518335?v=4" width="100px;" alt=""/>
-          <br />
-          <sub><b>Valentín Peppino</b></sub>
-        </a>
-        <br />
-        <a href="mailto:peppinovalentin@gmail.com">📧 peppinovalentin@gmail.com</a>
-      </td>
-      <td align="center">
-        <a href="https://github.com/agussantinelli">
-          <img src="https://avatars.githubusercontent.com/u/108520330?v=4" width="100px;" alt=""/>
-          <br />
-          <sub><b>Agustín Santinelli</b></sub>
-        </a>
-        <br />
-        <a href="mailto:agustinsantinelli@gmail.com">📧 agustinsantinelli@gmail.com</a>
-      </td>
-      <td align="center">
-        <a href="https://github.com/martin-ratti">
-          <img src="https://avatars.githubusercontent.com/u/108522330?v=4" width="100px;" alt=""/>
-          <br />
-          <sub><b>Martín Ratti</b></sub>
-        </a>
-        <br />
-        <a href="mailto:martinratti10@gmail.com">📧 martinratti10@gmail.com</a>
-      </td>
-    </tr>
-  </table>
-</div>
+| Nombre | Email | GitHub |
+| :--- | :--- | :--- |
+| **Gianlucas Zabaleta** | gianzabaleta6@hotmail.com | [@gianzaba](https://github.com/gianzaba) |
+| **Valentín Peppino** | peppinovalentin@gmail.com | [@valenpeppi](https://github.com/valenpeppi) |
+| **Agustín Santinelli** | agustinsantinelli@gmail.com | [@agussantinelli](https://github.com/agussantinelli) |
+| **Martín Ratti** | martinratti10@gmail.com | [@martin-ratti](https://github.com/martin-ratti) |
