@@ -25,7 +25,7 @@ En caso que un usuario se decida a realizar la compra de entradas para un determ
 Al momento de confirmar la compra, se solicitarán los datos necesarios y se procederá con el pago a través de los medios habilitados. Una vez finalizado el proceso, se mostrará al usuario un resumen detallado de su compra.
 
 ## Modelo    
-<img width="1277" height="514" alt="image" src="https://github.com/user-attachments/assets/2310737d-b2fb-4f1f-8596-3813303168ca" />
+<img width="880" height="325" alt="image" src="https://github.com/user-attachments/assets/53e7d7cd-24cb-44e9-a53b-869a42f4ebba" />
 
 
 Link de Draw.io: https://app.diagrams.net/#G1JQ4jZBuJwJ3PSq4Bxjy0-jp5qHoPxyZK#%7B%22pageId%22%3A%22C5RBs43oDa-KdzZeNtuy%22%7D
