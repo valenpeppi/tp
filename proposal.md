@@ -26,9 +26,9 @@
 | Legajo | Integrante | Rol / Github |
 | :---: | :--- | :--- |
 | **52588** | **Peppino, Valentín** | [@valenpeppi](https://github.com/valenpeppi) |
-| **52211** | **Santinelli, Agustín** | Developer |
-| **52425** | **Zabaleta, Gianlucas** | Developer |
-| **52398** | **Ratti, Martín** | Developer |
+| **52211** | **Santinelli, Agustín** | [@agussantinelli](https://github.com/agussantinelli) |
+| **52425** | **Zabaleta, Gianlucas** | [@gianzaba](https://github.com/gianzaba) |
+| **52398** | **Ratti, Martín** | [@martin-ratti](https://github.com/martin-ratti) |
 
 </div>
 
