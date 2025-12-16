@@ -154,11 +154,23 @@ OPENROUTER_API_KEY=tu_api_key_ai
 RECAPTCHA_SECRET_KEY=tu_recaptcha_secret
 STRIPE_SECRET_KEY=tu_stripe_secret
 STRIPE_WEBHOOK_SECRET=tu_stripe_webhook_secret
-VITE_GOOGLE_CLIENT_ID=tu_google_client_id
+GOOGLE_CLIENT_ID=tu_google_client_id
 
 # Servicio de Email
 EMAIL_USER=ticketapp15@gmail.com
 EMAIL_PASS="bbkawrefeqezufei"
+</code></pre>
+
+<h3>4️⃣ Configuración del Frontend</h3>
+<p>Crea un archivo <code>.env</code> en la raíz de la carpeta <strong>FrontEnd-Venta-de-Entradas</strong>:</p>
+
+<pre><code># Configuración Base
+VITE_API_BASE=http://localhost:3000/api
+VITE_BACKEND_URL=http://localhost:3000
+
+# Integraciones
+VITE_GOOGLE_CLIENT_ID=tu_google_client_id
+VITE_RECAPTCHA_SITE_KEY=tu_recaptcha_site_key
 </code></pre>
 
 <p><strong>Ejecutar migraciones y seeds (datos iniciales):</strong></p>
