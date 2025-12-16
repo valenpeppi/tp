@@ -39,7 +39,7 @@ Link de Draw.io: https://app.diagrams.net/#G1JQ4jZBuJwJ3PSq4Bxjy0-jp5qHoPxyZK#%7
 Regularidad:
 |Req|Detalle|
 |:-|:-|
-|CRUD simple|1. CRUD TipoEvento<br>2. CRUD Usuario <br>3. CRUD Lugar <br>4. CRUD Organizador|
+|CRUD simple|1. CRUD Organizador<br>2. CRUD Usuario <br>3. CRUD Mensaje <br>4. CRUD Evento|
 |CRUD dependiente|1. CRUD Precio {depende de} Sector y Evento<br>2. CRUD Evento {depende de} Lugar y TipoEvento<br>3.CRUD Sector {depende de} CRUD Lugar|
 |Listado<br>+<br>detalle| 1. Listado por nombre de evento, mostrando nombre, descripción, precio “desde” y fecha → detalle del evento muestra con estado, tipo, lugar, sectores disponibles, y si el evento/sector es enumerado o no enumerado.<br> 2. Listado por tipo de evento, muestra nombre de evento e imagen => detalle muestra nombre, descripción, precio “desde”, fecha, estado, tipo, lugar, sectores disponibles.|
 |CUU/Epic|1. Comprar entradas para un evento publicado, contemplando flujo enumerado (selección de asientos en mapa dentro del sector) y flujo no enumerado (cantidad por sector).<br>2. Crear evento por organizador (quedando el evento en estado pendiente), y se publica al ser aprobado por un administrador.|
