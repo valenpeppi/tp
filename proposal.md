@@ -1,67 +1,101 @@
-# Propuesta TP DSW
+<h1 align="center">🎟️ TicketApp: Sistema de Venta de Entradas</h1>
 
-## Grupo
-### Integrantes
- 52588 - Peppino, Valentín<br>
- 52211 - Santinelli, Agustín<br>
- 52425 - Zabaleta, Gianlucas<br>
- 52398 - Ratti, Martín<br>
+<p align="center">
+  <strong>Propuesta de Trabajo Práctico - Desarrollo de Sistemas Web (DSW)</strong>
+</p>
 
-### Repositorios
-* [Frontend](https://github.com/valenpeppi/FrontEnd-Venta-de-Entradas)
-* [Backend](https://github.com/valenpeppi/BackEnd-Venta-de-Entradas)
+<p align="center">
+  <a href="https://github.com/valenpeppi/FrontEnd-Venta-de-Entradas">
+    <img src="https://img.shields.io/badge/Repositorio-Frontend-blue?style=for-the-badge&logo=react" alt="Frontend Repo" />
+  </a>
+  <a href="https://github.com/valenpeppi/BackEnd-Venta-de-Entradas">
+    <img src="https://img.shields.io/badge/Repositorio-Backend-green?style=for-the-badge&logo=spring" alt="Backend Repo" />
+  </a>
+  <br>
+  <a href="https://github.com/valenpeppi/tp/pulls">
+    <img src="https://img.shields.io/badge/Estado-Pull%20Requests-orange?style=flat-square" alt="PRs" />
+  </a>
+</p>
 
-## Tema
-### Descripción
-La plataforma consiste en un sistema de venta de entradas para eventos. Los organizadores pueden solicitar la creación de un evento, seleccionando un estadio
-    previamente cargado en el sistema y completando los datos requeridos. Una vez enviada la solicitud, esta solicitud queda en estado pendiente y debe ser revisada y aprobada por un administrador.<br>
-    
-Cuando el evento es aprobado por el administrador, el evento quedará en estado pendiente para su publicación hasta que el organizador decida publicarlo. Una vez publicado en la plataforma, pasa a estar disponible para que los todos los usuarios puedan ver los eventos disponibles. Todos los eventos estarán organizados según su tipo, con el objetivo de facilitar la búsqueda. En caso de requerir información adicional sobre un evento, se proporcionará un detalle completo con todos los datos disponibles.<br>
+<hr>
 
-En caso que un usuario se decida a realizar la compra de entradas para un determinado evento, deberá registrarse en la página si aun no lo ha hecho. A continuación, el proceso de selección variará según si el estadio cuenta con asientos numerados o no.<br>
-   -Si el estadio es numerado, se mostrará primero la selección de sector y luego un mapa interactivo con los asientos disponibles dentro de ese sector.<br>
-   -Si el estadio no es numerado, el usuario solo deberá elegir el sector deseado.<br>
+<div align="center">
 
-Al momento de confirmar la compra, se solicitarán los datos necesarios y se procederá con el pago a través de los medios habilitados. Una vez finalizado el proceso, se mostrará al usuario un resumen detallado de su compra.
+## 👥 Equipo de Desarrollo
 
-## Modelo    
-<img width="880" height="325" alt="image" src="https://github.com/user-attachments/assets/53e7d7cd-24cb-44e9-a53b-869a42f4ebba" />
+| Legajo | Integrante | Rol / Github |
+| :---: | :--- | :--- |
+| **52588** | **Peppino, Valentín** | [@valenpeppi](https://github.com/valenpeppi) |
+| **52211** | **Santinelli, Agustín** | Developer |
+| **52425** | **Zabaleta, Gianlucas** | Developer |
+| **52398** | **Ratti, Martín** | Developer |
 
-
-Link de Draw.io: https://app.diagrams.net/#G1JQ4jZBuJwJ3PSq4Bxjy0-jp5qHoPxyZK#%7B%22pageId%22%3A%22C5RBs43oDa-KdzZeNtuy%22%7D
-
-
-## Alcance Funcional 
-
-### Alcance Mínimo
-
-
-Regularidad:
-|Req|Detalle|
-|:-|:-|
-|CRUD simple|1. CRUD Organizador<br>2. CRUD Usuario <br>3. CRUD Mensaje <br>4. CRUD Evento|
-|CRUD dependiente|1. CRUD Precio {depende de} Sector y Evento<br>2. CRUD Evento {depende de} Lugar y TipoEvento<br>3.CRUD Sector {depende de} CRUD Lugar|
-|Listado<br>+<br>detalle| 1. Listado por nombre de evento, mostrando nombre, descripción, precio “desde” y fecha → detalle del evento muestra con estado, tipo, lugar, sectores disponibles, y si el evento/sector es enumerado o no enumerado.<br> 2. Listado por tipo de evento, muestra nombre de evento e imagen => detalle muestra nombre, descripción, precio “desde”, fecha, estado, tipo, lugar, sectores disponibles.|
-|CUU/Epic|1. Comprar entradas para un evento publicado, contemplando flujo enumerado (selección de asientos en mapa dentro del sector) y flujo no enumerado (cantidad por sector).<br>2. Crear evento por organizador (quedando el evento en estado pendiente), y se publica al ser aprobado por un administrador.|
-
-
-Adicionales para Aprobación Directa
-|Req|Detalle|
-|:-|:-|
-|CRUD |1. CRUD Usuario<br>2. CRUD Entrada<br>3. CRUD Evento<br>4. CRUD Sector<br>5. CRUD Venta<br>6. CRUD Precio<br>7. CRUD Lugar<br>8. CRUD TipoEvento<br>9. CRUD Butaca<br>10. CRUD LineaVenta<br>11. CRUD Mensaje|
-|CUU/Epic|1. Crear un evento.<br>2. Aprobar/rechazar eventos pendientes.<br>3. Destacar Evento.<br>4. Comprar una entrada para un evento publicado.|
-
-
-### Alcance Adicional Voluntario
-
-
-|Req|Detalle|
-|:-|:-|
-|Listados |1. Eventos filtrados por descripcion parcial y tipo de evento. Muestra los datos del evento.|
-|CUU/Epic|1. Asistente virtual de guiado.<br>2.  Ver historial de compras del usuario con tickets descargables.|
-|Otros|1. Centro de Ayuda.<br>2. Preguntas frecuentes.<br>3. Sobre TicketApp.<br>4. Términos y condiciones.|
+</div>
 
 ---
 
-### Link a [PR](https://github.com/valenpeppi/tp/pulls)
+## 📖 Descripción del Proyecto
 
+La plataforma es un sistema integral para la gestión y venta de entradas a eventos. El flujo de negocio abarca desde la solicitud de un evento por parte de un organizador hasta la confirmación de la compra por parte del usuario final.
+
+### 🔄 Flujo Principal
+
+1.  📝 **Solicitud y Creación:** Los organizadores solicitan crear un evento eligiendo un estadio precargado. La solicitud inicia en estado `Pendiente`.
+2.  🛡️ **Aprobación:** Un administrador revisa y aprueba el evento. Este pasa a estado `Pendiente de Publicación`.
+3.  🚀 **Publicación:** El organizador decide cuándo hacer visible el evento para todos los usuarios.
+4.  🔍 **Exploración:** Los eventos se organizan por tipo para facilitar la búsqueda, ofreciendo detalles completos.
+
+### 🛒 Experiencia de Compra
+
+Para comprar, el usuario debe estar registrado. El proceso se adapta a la infraestructura del estadio:
+
+* **🏟️ Estadios Numerados:** Selección de sector + selección de asiento específico en mapa interactivo.
+* **🎪 Estadios No Numerados:** Selección directa del sector deseado.
+
+> ✅ Al confirmar el pago, se genera un resumen detallado de la transacción.
+
+---
+
+## 🏗️ Modelo de Dominio
+
+<div align="center">
+  <img width="880" alt="Modelo de Dominio" src="https://github.com/user-attachments/assets/53e7d7cd-24cb-44e9-a53b-869a42f4ebba" />
+  <br><br>
+  <a href="https://app.diagrams.net/#G1JQ4jZBuJwJ3PSq4Bxjy0-jp5qHoPxyZK#%7B%22pageId%22%3A%22C5RBs43oDa-KdzZeNtuy%22%7D">
+    <b>🔗 Ver Diagrama Interactivo en Draw.io</b>
+  </a>
+</div>
+
+---
+
+## 🎯 Alcance Funcional
+
+### 🔹 1. Alcance Mínimo (Regularidad)
+
+| Requisito | Detalle Funcional |
+| :--- | :--- |
+| **CRUD Simple** | 1. Organizador<br>2. Usuario<br>3. Mensaje<br>4. Evento |
+| **CRUD Dependiente** | 1. Precio *(depende de Sector y Evento)*<br>2. Evento *(depende de Lugar y TipoEvento)*<br>3. Sector *(depende de Lugar)* |
+| **Listados y Detalle** | **Por Nombre:** Muestra nombre, descripción, precio "desde" y fecha.<br>↳ *Detalle:* Estado, tipo, lugar, sectores y si es numerado/no numerado.<br><br>**Por Tipo:** Muestra nombre e imagen.<br>↳ *Detalle:* Muestra datos completos igual al anterior. |
+| **CUU / Epic** | 1. **Comprar Entradas:** Flujo numerado (mapa de asientos) y no numerado.<br>2. **Gestión de Eventos:** Crear (Organizador) → Aprobar (Admin) → Publicar. |
+
+### 🔹 2. Aprobación Directa (Adicionales)
+
+| Requisito | Detalle Funcional |
+| :--- | :--- |
+| **CRUDs Avanzados** | 1. Usuario <br>2. Entrada <br>3. Evento <br>4. Sector<br>5. Venta <br>6. Precio <br>7. Lugar <br>8. TipoEvento<br>9. Butaca <br>10. LineaVenta <br>11. Mensaje|
+| **CUU / Epic** | 1. Crear evento completo.<br>2. Aprobar o rechazar eventos pendientes.<br>3. Destacar un evento en la home.<br>4. Ciclo completo de compra de entrada. |
+
+### 🔹 3. Alcance Voluntario (Nice to have)
+
+| Categoría | Funcionalidad |
+| :--- | :--- |
+| **Búsqueda** | Filtros combinados por descripción parcial y tipo de evento. |
+| **Usuario** | 1. Asistente virtual de guiado.<br>2. Historial de compras con descarga de tickets (PDF/QR). |
+| **Información** | 1. Centro de Ayuda / FAQ.<br>2. Sección "Sobre TicketApp".<br>3. Términos y condiciones. |
+
+---
+
+<div align="center">
+  <sub>Desarrollado para la cátedra de Desarrollo de Sistemas Web - 2025</sub>
+</div>
