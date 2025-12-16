@@ -48,7 +48,7 @@ Regularidad:
 Adicionales para Aprobación Directa
 |Req|Detalle|
 |:-|:-|
-|CRUD |1. CRUD Usuario<br>2. CRUD Entrada<br>3. CRUD Evento<br>4. CRUD Sector<br>5. CRUD Venta<br>6. CRUD Precio<br>7. CRUD Lugar<br>8. CRUD TipoEvento<br>9. CRUD Butaca<br>10. CRUD LineaVenta|
+|CRUD |1. CRUD Usuario<br>2. CRUD Entrada<br>3. CRUD Evento<br>4. CRUD Sector<br>5. CRUD Venta<br>6. CRUD Precio<br>7. CRUD Lugar<br>8. CRUD TipoEvento<br>9. CRUD Butaca<br>10. CRUD LineaVenta<br>11. CRUD Mensaje|
 |CUU/Epic|1. Crear un evento.<br>2. Aprobar/rechazar eventos pendientes.<br>3. Destacar Evento.<br>4. Comprar una entrada para un evento publicado.|
 
 
