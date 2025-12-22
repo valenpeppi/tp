@@ -1,4 +1,4 @@
-<h1>🏠 TicketApp – Repositorio Central</h1>
+<h1 align="center">🏠 TicketApp – Repositorio Central</h1>
 
 <p align="center">
   <a href="https://github.com/valenpeppi/FrontEnd-Venta-de-Entradas" target="_blank" style="text-decoration: none;">
