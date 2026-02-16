@@ -8,7 +8,7 @@
     <img src="https://img.shields.io/badge/⚙️%20Ir%20al%20Backend-Node.js%20%7C%20Express-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Repo Backend"/>
   </a>
   <a href="https://drive.google.com/file/d/1JQ4jZBuJwJ3PSq4Bxjy0-jp5qHoPxyZK/view" target="_blank" style="text-decoration: none;">
-    <img src="https://img.shields.io/badge/🗺️%20Ver%20Modelo%20ER-DER-ff9800?style=for-the-badge&logo=googledrive&logoColor=white" alt="DER TicketApp"/>
+    <img src="https://img.shields.io/badge/🗺️%20Ver%20Modelo%20DER-DER-ff9800?style=for-the-badge&logo=googledrive&logoColor=white" alt="DER TicketApp"/>
   </a>
   <a href="https://github.com/valenpeppi/tp/blob/main/docs.md" target="_blank" style="text-decoration: none;">
     <img src="https://img.shields.io/badge/📄%20Documentación%20API-Docs-4C51BF?style=for-the-badge&logo=readme&logoColor=white" alt="Docs API"/>
@@ -30,6 +30,11 @@
   </a>
 </p>
 
+<div align="center">
+    <a href="https://opensource.org/licenses/MIT">
+        <img src="https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge" alt="License: MIT"/>
+    </a>
+</div>
 <hr/>
 
 <h2>🎯 Visión General</h2>
@@ -276,3 +281,18 @@ npm run test:e2e
 | **Valentín Peppino** | peppinovalentin@gmail.com | [@valenpeppi](https://github.com/valenpeppi) |
 | **Agustín Santinelli** | agustinsantinelli@gmail.com | [@agussantinelli](https://github.com/agussantinelli) |
 | **Martín Ratti** | martinratti10@gmail.com | [@martin-ratti](https://github.com/martin-ratti) |
+
+<hr/>
+<h2 align="left">⚖️ Licencia</h2>
+
+<p align="left">
+  Este proyecto está bajo la <b>Licencia MIT</b>. Para más detalles, puedes consultar el archivo 
+  <a href="LICENSE"><code>LICENSE</code></a> incluido en la raíz de este repositorio.
+</p>
+
+<p align="left">
+  <i>
+    La licencia MIT permite el uso, copia, modificación y distribución del software de forma gratuita, 
+    siempre que se incluya el aviso de copyright original.
+  </i>
+</p>
