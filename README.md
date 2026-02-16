@@ -281,3 +281,18 @@ npm run test:e2e
 | **Valentín Peppino** | peppinovalentin@gmail.com | [@valenpeppi](https://github.com/valenpeppi) |
 | **Agustín Santinelli** | agustinsantinelli@gmail.com | [@agussantinelli](https://github.com/agussantinelli) |
 | **Martín Ratti** | martinratti10@gmail.com | [@martin-ratti](https://github.com/martin-ratti) |
+
+<hr/>
+<h2 align="left">⚖️ Licencia</h2>
+
+<p align="left">
+  Este proyecto está bajo la <b>Licencia MIT</b>. Para más detalles, puedes consultar el archivo 
+  <a href="LICENSE"><code>LICENSE</code></a> incluido en la raíz de este repositorio.
+</p>
+
+<p align="left">
+  <i>
+    La licencia MIT permite el uso, copia, modificación y distribución del software de forma gratuita, 
+    siempre que se incluya el aviso de copyright original.
+  </i>
+</p>
